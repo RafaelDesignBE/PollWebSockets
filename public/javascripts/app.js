@@ -55,22 +55,9 @@ submit.addEventListener("click", function(e){
 
   if(vote1 != null){
   vote1.addEventListener("click", function(e){
-    option1++;
-    option2--;
-    primus.write({ 
-      question: q,
-      answer1: ans1,
-      answer2: ans2,
-      option1: option1,
-      option2: option2
-    });
-  });
-  }
-
-  if(vote2 != null){
-    vote2.addEventListener("click", function(e){
-      option1--;
-      option2++;
+    if(option1 < 100){
+      option1++;
+      option2--;
       primus.write({ 
         question: q,
         answer1: ans1,
@@ -78,5 +65,22 @@ submit.addEventListener("click", function(e){
         option1: option1,
         option2: option2
       });
+    }
+  });
+  }
+
+  if(vote2 != null){
+    vote2.addEventListener("click", function(e){
+      if(option2 < 100){
+        option1--;
+        option2++;
+        primus.write({ 
+          question: q,
+          answer1: ans1,
+          answer2: ans2,
+          option1: option1,
+          option2: option2
+        });
+      }
     });
     }
