@@ -27,6 +27,8 @@ var primus = Primus.connect(url, {
     q = data.question;
     ans1 = data.answer1;
     ans2 = data.answer2;
+    option1 = data.option1;
+    option2 = data.option2;
     console.log('option 1: ' + option1 + ' option 2: ' + option2);
   });
 
@@ -43,8 +45,8 @@ submit.addEventListener("click", function(e){
       question: q,
       answer1: ans1,
       answer2: ans2,
-      option1: option1,
-      option2: option2
+      option1: '50',
+      option2: '50'
     });
 
     e.preventDefault();
