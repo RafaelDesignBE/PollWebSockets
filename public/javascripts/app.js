@@ -7,8 +7,13 @@ var primus = Primus.connect(url, {
     }
   });
 
+  var submit = document.querySelector('#submit');
   var option1 = 50;
   var option2 = 50;
+ 
+  var q = "";
+  var ans1 = "";
+  var ans2 = "";
   var vote1 = document.querySelector('#vote1');
   var vote2 = document.querySelector('#vote2');
 
@@ -17,25 +22,59 @@ var primus = Primus.connect(url, {
     question.innerHTML = data.question;
     vote1.innerHTML = data.answer1;
     vote2.innerHTML = data.answer2;
+    vote1.style.height = data.option1*2 + "px";
+    vote2.style.height = data.option2*2 + "px";
+    q = data.question;
+    ans1 = data.answer1;
+    ans2 = data.answer2;
     console.log('option 1: ' + option1 + ' option 2: ' + option2);
   });
 
 
   // klikken op submit -> naar server sturen
-  document.querySelector('#submit').addEventListener("click", function(e){
-    var q = document.querySelector('#question');
-    var ans1 = document.querySelector('#answer1');
-    var ans2 = document.querySelector('#answer2');
-
+  if(submit != null){
+submit.addEventListener("click", function(e){
+    q = document.querySelector('#question').value;
+    ans1 = document.querySelector('#answer1').value;
+    ans2 = document.querySelector('#answer2').value;
+    option1 = 50;
+    option2 = 50;
     primus.write({ 
-      question: q.value,
-      answer1: ans1.value,
-      answer2: ans2.value
+      question: q,
+      answer1: ans1,
+      answer2: ans2,
+      option1: option1,
+      option2: option2
     });
 
     e.preventDefault();
   });
+  }
 
-  document.querySelector('#vote1').addEventListener("click", function(e){
-    
+  if(vote1 != null){
+  vote1.addEventListener("click", function(e){
+    option1++;
+    option2--;
+    primus.write({ 
+      question: q,
+      answer1: ans1,
+      answer2: ans2,
+      option1: option1,
+      option2: option2
+    });
   });
+  }
+
+  if(vote2 != null){
+    vote2.addEventListener("click", function(e){
+      option1--;
+      option2++;
+      primus.write({ 
+        question: q,
+        answer1: ans1,
+        answer2: ans2,
+        option1: option1,
+        option2: option2
+      });
+    });
+    }

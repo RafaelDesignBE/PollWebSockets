@@ -19,7 +19,11 @@ a {
   width: 50%;
   position: absolute;
   bottom: 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
+
 #vote1 {
   left: 0;
   background-color: #96CFF1;
