@@ -7,10 +7,17 @@ var primus = Primus.connect(url, {
     }
   });
 
+  var option1 = 50;
+  var option2 = 50;
+  var vote1 = document.querySelector('#vote1');
+  var vote2 = document.querySelector('#vote2');
 
   primus.on('data', function received(data) {
-    var title = document.querySelector('#title');
-    title.innerHTML = data.answer1;
+    var question = document.querySelector('#question');
+    question.innerHTML = data.question;
+    vote1.innerHTML = data.answer1;
+    vote2.innerHTML = data.answer2;
+    console.log('option 1: ' + option1 + ' option 2: ' + option2);
   });
 
 
@@ -27,4 +34,8 @@ var primus = Primus.connect(url, {
     });
 
     e.preventDefault();
+  });
+
+  document.querySelector('#vote1').addEventListener("click", function(e){
+    
   });
