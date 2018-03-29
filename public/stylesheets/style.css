@@ -34,3 +34,42 @@ a {
   right: 0;
   background-color: #E487DF;
 }
+
+#create {
+  padding: 0.5rem 2rem;
+  background-color: #ccc;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+}
+
+form label {
+  margin-top: 1rem;
+  display: block;
+  font-size: 1.2rem;
+}
+
+form input {
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+form input:focus {
+  border-color: #999;
+}
+
+form input#submit {
+  margin-top: 1rem;
+  display: block;
+  border: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: #ccc;
+}
+
+form input#submit:hover, #create:hover {
+  background-color: #999;
+}
