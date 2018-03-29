@@ -53,6 +53,7 @@ form input {
   line-height: 1.5rem;
   margin-top: 0.5rem;
   padding: 0.5rem;
+  border-radius: none;
   border: 2px solid #ccc;
   outline: none;
 }
