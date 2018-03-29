@@ -16,12 +16,16 @@ var primus = Primus.connect(url, {
   var ans2 = "";
   var vote1 = document.querySelector('#vote1');
   var vote2 = document.querySelector('#vote2');
+  var create = document.querySelector('#create');
 
   primus.on('data', function received(data) {
     var question = document.querySelector('#question');
     question.innerHTML = data.question;
     vote1.innerHTML = data.answer1;
     vote2.innerHTML = data.answer2;
+    vote1.style.display = "block";
+    vote2.style.display = "block";
+    create.style.display = "none";
     vote1.style.height = data.option1*2 + "px";
     vote2.style.height = data.option2*2 + "px";
     q = data.question;
@@ -66,6 +70,7 @@ submit.addEventListener("click", function(e){
         option2: option2
       });
     }
+    e.preventDefault();
   });
   }
 
@@ -82,5 +87,6 @@ submit.addEventListener("click", function(e){
           option2: option2
         });
       }
+      e.preventDefault();
     });
     }
