@@ -65,7 +65,7 @@ form input:focus {
 form input#submit {
   margin-top: 1rem;
   display: block;
-  border: none;
+  border: 0;
   padding-left: 2rem;
   padding-right: 2rem;
   background-color: #ccc;
